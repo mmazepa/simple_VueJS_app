@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="pl-PL">
+    <head>
+        <meta charset="UTF-8">
+        <title>simple VueJS app</title>
+        <link rel="stylesheet" type="text/css" href="assets/css/style.css">
+        <script src="https://cdn.jsdelivr.net/npm/vue"></script>
+    </head>
+    <body>
+        <div id="pageTitle">
+            <h1>{{ title }}</h1>
+        </div>
+        <div id="mainList">
+            <ol>
+                <li v-for="element in elements">
+                    {{ element.text }}
+                </li>
+            </ol>
+            <div class="form">
+                <input id="newItemInput" type="text" />
+                <button onClick="addNewItem()">ADD</button>
+            </div>
+        </div>
+    </body>
+    <script>
+        var app = new Vue({
+            el: "#pageTitle",
+            data: {
+                title: "simple VueJS app"
+            }
+        });
+
+        var app2 = new Vue({
+            el: "#mainList",
+            data: {
+                elements: [
+                    { text: "First Element" },
+                    { text: "Second Element" },
+                    { text: "Third Element" }
+                ]
+            }
+        });
+
+        function addNewItem() {
+            const newItem = document.getElementById("newItemInput").value;
+            if (newItem !== null && newItem !== "") {
+                app2.elements.push({ text: newItem });
+            }
+        }
+    </script>
+</html>

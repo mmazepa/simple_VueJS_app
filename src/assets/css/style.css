@@ -1,0 +1,43 @@
+html {
+  width: 100%;
+}
+html body {
+  background: linear-gradient(90deg, darkred, navy, darkgreen);
+  color: whitesmoke;
+  text-align: center;
+  padding: 15px;
+}
+html body #mainList {
+  background: linear-gradient(90deg, red, blue, green);
+  color: lightblue;
+  border: 2.5px solid #1a1a1a;
+  border-top-left-radius: 25px;
+  border-bottom-right-radius: 25px;
+  box-shadow: 10px 10px 5px black;
+  font-weight: bold;
+  font-size: 20px;
+  padding: 10px;
+}
+html body #mainList .form {
+  display: inline-block;
+}
+html body #mainList .form input {
+  width: 300px;
+  height: 40px;
+  font-size: 25px;
+}
+html body #mainList .form button {
+  width: 100px;
+  height: 40px;
+  background: linear-gradient(90deg, black, gray, silver, white);
+  color: black;
+  font-weight: bold;
+  font-size: 25px;
+  border: 3px outset black;
+}
+html body #mainList .form button:hover {
+  background: linear-gradient(90deg, white, silver, gray, black);
+}
+html body #mainList .form button:active {
+  border: 3px inset black;
+}

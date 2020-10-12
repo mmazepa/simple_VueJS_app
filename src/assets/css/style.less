@@ -1,0 +1,55 @@
+// out: style.css
+
+.size(@width, @height) {
+  width: @width;
+  height: @height
+}
+
+html {
+  width: 100%;
+
+  body {
+    background: linear-gradient(90deg, darkred, navy, darkgreen);
+    color: whitesmoke;
+    text-align: center;
+    padding: 15px;
+
+    #mainList {
+      background: linear-gradient(90deg, red, blue, green);
+      color: lightblue;
+      border: 2.5px solid lighten(black, 10%);
+      border-top-left-radius: 25px;
+      border-bottom-right-radius: 25px;
+      box-shadow: 10px 10px 5px black;
+      font-weight: bold;
+      font-size: 20px;
+      padding: 10px;
+
+      .form {
+        display: inline-block;
+
+        input {
+          .size(300px, 40px);
+          font-size: 25px;
+        }
+
+        button {
+          .size(100px, 40px);
+          background: linear-gradient(90deg, black, gray, silver, white);
+          color: black;
+          font-weight: bold;
+          font-size: 25px;
+          border: 3px outset black;
+
+          &:hover {
+            background: linear-gradient(90deg, white, silver, gray, black);
+          }
+
+          &:active {
+            border: 3px inset black;
+          }
+        }
+      }
+    }
+  }
+}
