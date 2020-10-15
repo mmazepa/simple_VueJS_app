@@ -41,3 +41,10 @@ html body #mainList .form button:hover {
 html body #mainList .form button:active {
   border: 3px inset black;
 }
+html body #mainList #addInfo {
+  background: linear-gradient(90deg, tomato, lightblue, lightgreen);
+  color: black;
+  padding: 10px;
+  font-size: smaller;
+  border-radius: 10px;
+}

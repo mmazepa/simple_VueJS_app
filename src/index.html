@@ -20,8 +20,10 @@
                 <input id="newItemInput" type="text" />
                 <button onClick="addNewItem()">ADD</button>
             </div>
+            <p id="addInfo">...</p>
         </div>
     </body>
+
     <script>
         var app = new Vue({
             el: "#pageTitle",
@@ -41,10 +43,24 @@
             }
         });
 
+        function checkIfContains(elem, array) {
+            for (var i = 0; i < array.length; i++)
+                if (array[i].text.localeCompare(elem) === 0) return true;
+            return false;
+        }
+
         function addNewItem() {
             const newItem = document.getElementById("newItemInput").value;
+            const addInfo = document.getElementById("addInfo");
             if (newItem !== null && newItem !== "") {
-                app2.elements.push({ text: newItem });
+                if (!checkIfContains(newItem, app2.elements)) {
+                    app2.elements.push({ text: newItem });
+                    addInfo.innerHTML = "Element dodano pomyślnie!";
+                } else {
+                    addInfo.innerHTML = "Taki element znajduje się już na liście!";
+                }
+            } else {
+                addInfo.innerHTML = "Nic nie wpisano!";
             }
         }
     </script>
