@@ -16,7 +16,6 @@ html {
 
     #mainList {
       background: linear-gradient(90deg, red, blue, green);
-      color: lightblue;
       border: 2.5px solid lighten(black, 10%);
       border-top-left-radius: 25px;
       border-bottom-right-radius: 25px;
@@ -24,6 +23,48 @@ html {
       font-weight: bold;
       font-size: 20px;
       padding: 10px;
+
+      table {
+        margin: 25px auto;
+        width: 80%;
+        border-collapse: collapse;
+
+        tr {
+          th, td {
+            padding: 2px;
+
+            &:nth-child(2) {
+              width: 100px;
+
+              button {
+                background: none;
+                border: none;
+                color: red;
+                font-size: larger;
+              }
+            }
+          }
+
+          &:first-child {
+            background-color: black;
+            color: whitesmoke;
+          }
+
+          &:not(:first-child) {
+            background-color: whitesmoke;
+            color: lighten(black, 25%);
+
+            &:nth-child(2n+1) {
+              background-color: darken(whitesmoke, 10%);
+            }
+
+            &:hover {
+              background-color: darken(whitesmoke, 50%);
+              color: darken(whitesmoke, 10%);
+            }
+          }
+        }
+      }
 
       .form {
         display: inline-block;

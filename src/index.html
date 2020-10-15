@@ -11,11 +11,21 @@
             <h1>{{ title }}</h1>
         </div>
         <div id="mainList">
-            <ol>
-                <li v-for="element in elements">
-                    {{ element.text }}
-                </li>
-            </ol>
+            <h3>Tabela owoców</h3>
+            <table>
+                <tr>
+                    <th>Nazwa</th>
+                    <th>Usuń</th>
+                </tr>
+                <tr v-for="fruit in fruits">
+                    <td>
+                        <span>{{ fruit.name }}</span>
+                    </td>
+                    <td>
+                        <button onClick="removeItem(this)">✗</button>
+                    </td>
+                </tr>
+            </table>
             <div class="form">
                 <input id="newItemInput" type="text" />
                 <button onClick="addNewItem()">ADD</button>
@@ -35,17 +45,19 @@
         var app2 = new Vue({
             el: "#mainList",
             data: {
-                elements: [
-                    { text: "First Element" },
-                    { text: "Second Element" },
-                    { text: "Third Element" }
+                fruits: [
+                    { name: "Jabłko" },
+                    { name: "Gruszka" },
+                    { name: "Grapefruit" },
+                    { name: "Banan" },
+                    { name: "Truskawka" }
                 ]
             }
         });
 
         function checkIfContains(elem, array) {
             for (var i = 0; i < array.length; i++)
-                if (array[i].text.localeCompare(elem) === 0) return true;
+                if (array[i].name.localeCompare(elem) === 0) return true;
             return false;
         }
 
@@ -53,14 +65,28 @@
             const newItem = document.getElementById("newItemInput").value;
             const addInfo = document.getElementById("addInfo");
             if (newItem !== null && newItem !== "") {
-                if (!checkIfContains(newItem, app2.elements)) {
-                    app2.elements.push({ text: newItem });
+                if (!checkIfContains(newItem, app2.fruits)) {
+                    app2.fruits.push({ name: newItem });
                     addInfo.innerHTML = "Element dodano pomyślnie!";
                 } else {
                     addInfo.innerHTML = "Taki element znajduje się już na liście!";
                 }
             } else {
                 addInfo.innerHTML = "Nic nie wpisano!";
+            }
+        }
+
+        function removeItem(item) {
+            item = item.parentElement.parentElement;
+            const itemValue = item.firstChild.textContent;
+
+            var decision = confirm("Czy na pewno chcesz usunąć \"" + itemValue + "\"?");
+            if (decision) {
+                const addInfo = document.getElementById("addInfo");
+                app2.fruits = app2.fruits.filter(elem => elem.name.localeCompare(itemValue));
+                addInfo.innerHTML = "Element został usunięty!";
+            } else {
+                addInfo.innerHTML = "Element nie został usunięty!";
             }
         }
     </script>

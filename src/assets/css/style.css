@@ -9,7 +9,6 @@ html body {
 }
 html body #mainList {
   background: linear-gradient(90deg, red, blue, green);
-  color: lightblue;
   border: 2.5px solid #1a1a1a;
   border-top-left-radius: 25px;
   border-bottom-right-radius: 25px;
@@ -17,6 +16,41 @@ html body #mainList {
   font-weight: bold;
   font-size: 20px;
   padding: 10px;
+}
+html body #mainList table {
+  margin: 25px auto;
+  width: 80%;
+  border-collapse: collapse;
+}
+html body #mainList table tr th,
+html body #mainList table tr td {
+  padding: 2px;
+}
+html body #mainList table tr th:nth-child(2),
+html body #mainList table tr td:nth-child(2) {
+  width: 100px;
+}
+html body #mainList table tr th:nth-child(2) button,
+html body #mainList table tr td:nth-child(2) button {
+  background: none;
+  border: none;
+  color: red;
+  font-size: larger;
+}
+html body #mainList table tr:first-child {
+  background-color: black;
+  color: whitesmoke;
+}
+html body #mainList table tr:not(:first-child) {
+  background-color: whitesmoke;
+  color: #404040;
+}
+html body #mainList table tr:not(:first-child):nth-child(2n+1) {
+  background-color: #dcdcdc;
+}
+html body #mainList table tr:not(:first-child):hover {
+  background-color: #767676;
+  color: #dcdcdc;
 }
 html body #mainList .form {
   display: inline-block;
