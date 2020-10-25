@@ -20,28 +20,28 @@ var app2 = new Vue({
     }
 });
 
-function checkIfContains(elem, array) {
+const checkIfContains = (elem, array) => {
     for (var i = 0; i < array.length; i++)
         if (array[i].name.localeCompare(elem) === 0) return true;
     return false;
-}
+};
 
-function addNewItem() {
+const addNewItem = () => {
     const newItem = document.getElementById("newItemInput").value;
     const addInfo = document.getElementById("addInfo");
     if (newItem !== null && newItem !== "") {
         if (!checkIfContains(newItem, app2.fruits)) {
             app2.fruits.push({ name: newItem });
-            addInfo.innerHTML = "Element dodano pomyślnie!";
+            addInfo.innerHTML = "Element \"" + newItem + "\"  dodano pomyślnie!";
         } else {
-            addInfo.innerHTML = "Taki element znajduje się już na liście!";
+            addInfo.innerHTML = "Taki element (\"" + newItem + "\") znajduje się już na liście!";
         }
     } else {
         addInfo.innerHTML = "Nic nie wpisano!";
     }
-}
+};
 
-function removeItem(item) {
+const removeItem = (item) => {
     item = item.parentElement.parentElement;
     const itemValue = item.firstChild.textContent;
 
@@ -49,8 +49,19 @@ function removeItem(item) {
     if (decision) {
         const addInfo = document.getElementById("addInfo");
         app2.fruits = app2.fruits.filter(elem => elem.name.localeCompare(itemValue));
-        addInfo.innerHTML = "Element został usunięty!";
+        addInfo.innerHTML = "Element \"" + itemValue + "\" został usunięty!";
     } else {
-        addInfo.innerHTML = "Element nie został usunięty!";
+        addInfo.innerHTML = "Element  \"" + itemValue + "\" nie został usunięty!";
     }
-}
+};
+
+const submitFormWithEnterKey = () => {
+    var input = document.getElementById("newItemInput");
+    input.addEventListener("keyup", function(event) {
+        if (event.keyCode === 13) {
+            event.preventDefault();
+            document.getElementById("newItemButton").click();
+        }
+    });
+};
+submitFormWithEnterKey();
