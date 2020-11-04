@@ -22,14 +22,20 @@ var app2 = new Vue({
 
 const checkIfContains = (elem, array) => {
     for (var i = 0; i < array.length; i++)
-        if (array[i].name.localeCompare(elem) === 0) return true;
+        if (array[i].name.localeCompare(elem, undefined, { sensitivity: "accent" }) === 0)
+            return true;
     return false;
 };
 
+const firstUppercaseRestLowercase = (word) => {
+    return word.charAt(0).toUpperCase() + word.slice(1).toLowerCase();
+};
+
 const addNewItem = () => {
-    const newItem = document.getElementById("newItemInput").value;
+    let newItem = document.getElementById("newItemInput").value;
     const addInfo = document.getElementById("addInfo");
     if (newItem !== null && newItem !== "") {
+        newItem = firstUppercaseRestLowercase(newItem);
         if (!checkIfContains(newItem, app2.fruits)) {
             app2.fruits.push({ name: newItem });
             addInfo.innerHTML = "Element \"" + newItem + "\"  dodano pomyślnie!";

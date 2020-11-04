@@ -9,13 +9,16 @@ html {
   width: 100%;
 
   body {
-    background: linear-gradient(90deg, darkred, navy, darkgreen);
-    color: whitesmoke;
-    text-align: center;
+    background: linear-gradient(90deg, lighten(darkred, 65%), lighten(navy, 65%), lighten(darkgreen, 65%));
+    color: lighten(black, 15%);
+    text-shadow: 5px 5px 5px lighten(black, 25%);
     padding: 15px;
 
     #mainList {
+      text-align: center;
+      text-shadow: 1px 1px 0px lighten(black, 10%);
       background: linear-gradient(90deg, red, blue, green);
+      color: whitesmoke;
       border: 2.5px solid lighten(black, 10%);
       border-top-left-radius: 25px;
       border-bottom-right-radius: 25px;
@@ -76,17 +79,23 @@ html {
 
         button {
           .size(100px, 40px);
-          background: linear-gradient(90deg, black, gray, silver, white);
-          color: black;
+          background-color: lighten(black, 15%);
+          color: whitesmoke;
+          text-shadow: 1px 1px 1px darkred;
           font-weight: bold;
           font-size: 25px;
           border: 3px outset black;
+          transition: 0.15s;
 
           &:hover {
-            background: linear-gradient(90deg, white, silver, gray, black);
+            background-color: darken(whitesmoke, 15%);
+            color: black;
+            text-shadow: 1px 1px 1px tomato;
+            transition: 0.15s;
           }
 
           &:active {
+            background-color: darken(whitesmoke, 25%);
             border: 3px inset black;
           }
         }

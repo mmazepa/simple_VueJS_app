@@ -32,7 +32,9 @@
                 </tr>
             </table>
             <div class="form">
-                <input id="newItemInput" type="text" />
+                <input  id="newItemInput"
+                        type="text"
+                        onkeypress="return /[a-zA-ZąćęłńóśżźĄĆĘŁŃÓŚŻŹ]/i.test(event.key)" />
                 <button id="newItemButton" onClick="addNewItem()">ADD</button>
             </div>
             <p id="addInfo">...</p>
