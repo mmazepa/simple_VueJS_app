@@ -27,15 +27,22 @@ const checkIfContains = (elem, array) => {
     return false;
 };
 
-const firstUppercaseRestLowercase = (word) => {
-    return word.charAt(0).toUpperCase() + word.slice(1).toLowerCase();
+const firstUppercaseRestLowercase = (fruitName) => {
+    return fruitName.charAt(0).toUpperCase() + fruitName.slice(1).toLowerCase();
+};
+
+const prepareText = (text) => {
+    text = text.trim();
+    text = text.replace(/\s{2,}/g, " ");
+    text = firstUppercaseRestLowercase(text);
+    return text;
 };
 
 const addNewItem = () => {
     let newItem = document.getElementById("newItemInput").value;
     const addInfo = document.getElementById("addInfo");
     if (newItem !== null && newItem !== "") {
-        newItem = firstUppercaseRestLowercase(newItem);
+        newItem = prepareText(newItem);
         if (!checkIfContains(newItem, app2.fruits)) {
             app2.fruits.push({ name: newItem });
             addInfo.innerHTML = "Element \"" + newItem + "\"  dodano pomyślnie!";
