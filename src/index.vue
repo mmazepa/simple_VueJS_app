@@ -4,18 +4,18 @@
         <meta charset="UTF-8">
         <title>simple VueJS app</title>
         <link rel="stylesheet" type="text/css" href="assets/css/style.css">
-        <script src="https://cdn.jsdelivr.net/npm/vue"></script>
+        <script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
     </head>
     <body>
         <div id="pageTitle">
             <h1>{{ title }}</h1>
         </div>
         <div id="mainList">
-            <h3>Tabela owoców</h3>
+            <h3>Table of fruits</h3>
             <table>
                 <tr>
-                    <th>Nazwa</th>
-                    <th>Usuń</th>
+                    <th>Fruit name</th>
+                    <th>Delete</th>
                 </tr>
                 <tr v-if="fruits.length" v-for="fruit in fruits">
                     <td>

@@ -11,11 +11,11 @@ var app2 = new Vue({
     el: "#mainList",
     data: {
         fruits: [
-            { name: "Jabłko" },
-            { name: "Gruszka" },
+            { name: "Apple" },
+            { name: "Pear" },
             { name: "Grapefruit" },
-            { name: "Banan" },
-            { name: "Truskawka" }
+            { name: "Banana" },
+            { name: "Strawberry" }
         ]
     }
 });
@@ -45,12 +45,12 @@ const addNewItem = () => {
         newItem = prepareText(newItem);
         if (!checkIfContains(newItem, app2.fruits)) {
             app2.fruits.push({ name: newItem });
-            addInfo.innerHTML = "Element \"" + newItem + "\"  dodano pomyślnie!";
+            addInfo.innerHTML = "Item \"" + newItem + "\"  have been added successfully!";
         } else {
-            addInfo.innerHTML = "Taki element (\"" + newItem + "\") znajduje się już na liście!";
+            addInfo.innerHTML = "This item (\"" + newItem + "\") is already in the database!";
         }
     } else {
-        addInfo.innerHTML = "Nic nie wpisano!";
+        addInfo.innerHTML = "Nothing was entered!";
     }
 };
 
@@ -58,13 +58,13 @@ const removeItem = (item) => {
     item = item.parentElement.parentElement;
     const itemValue = item.firstChild.textContent;
 
-    var decision = confirm("Czy na pewno chcesz usunąć \"" + itemValue + "\"?");
+    var decision = confirm("Are you sure you want to delete \"" + itemValue + "\"?");
     if (decision) {
         const addInfo = document.getElementById("addInfo");
         app2.fruits = app2.fruits.filter(elem => elem.name.localeCompare(itemValue));
-        addInfo.innerHTML = "Element \"" + itemValue + "\" został usunięty!";
+        addInfo.innerHTML = "Item \"" + itemValue + "\" has been deleted successfully!";
     } else {
-        addInfo.innerHTML = "Element  \"" + itemValue + "\" nie został usunięty!";
+        addInfo.innerHTML = "Item  \"" + itemValue + "\" has not been deleted!";
     }
 };
 
